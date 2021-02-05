@@ -2,7 +2,8 @@
     "scripts": {
         "server": "cd ./server && npm start",
         "client": "cd ./client && npm start",
-        "start": "concurrently \"npm run server\" \"npm run client\""
+        "mongo":  "start \"MongoDB instance\" /D \"C:/Program Files/MongoDB/Server/4.4/bin/\" mongod.exe",
+        "start": "concurrently \"npm run server\" \"npm run client\" \"npm run mongo\" "
     },
     "dependencies": {
         "concurrently": "^5.3.0"
