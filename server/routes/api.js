@@ -3,8 +3,6 @@ const router = express.Router();
 const Post = require('../models/Post');
 
 router.post('/', function(req, res) {
-    console.log(req.body);
-
     const post = new Post({
         title: req.body.title,
         text: req.body.desc
@@ -16,6 +14,17 @@ router.post('/', function(req, res) {
 router.get('/', function(req, res) {
     Post.find({}, function(err, posts) {
         return res.send(posts)
+    })
+});
+
+router.delete('/:id', function(req, res) {
+    Post.deleteOne({_id: req.params.id}, function(err) {
+        console.log('Deleteing Post')
+        if(err) {
+            console.log(err);
+        } else {
+            return res.sendStatus(200)
+        }
     })
 })
 

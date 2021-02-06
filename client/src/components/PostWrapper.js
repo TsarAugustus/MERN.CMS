@@ -22,12 +22,20 @@ const PostWrapper = () => {
         updateList(false);
     }, [list])
 
-    function onSubmit(title, desc) {
-        axios.post('/api', {
+    const onSubmit = async (title, desc) => {
+        await axios.post('/api', {
             title,
             desc
-        }).then((res) => {
-            console.log(res)
+        }).then(() => {
+            updateList(true)
+        }, (error) => {
+            console.log(error)
+        })
+    }
+
+    const onDelete = async (id) => {
+        await axios.delete(`/api/${id}`)
+        .then(() => {
             updateList(true)
         }, (error) => {
             console.log(error)
@@ -37,7 +45,7 @@ const PostWrapper = () => {
     return (
         <div>
             <h1>Wrapper Header</h1>
-            <PostList postList={postList}/>
+            <PostList postList={postList} onDelete={onDelete}/>
             <PostInput onSubmit={onSubmit}/>
         </div>
     )
