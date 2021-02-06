@@ -1,39 +1,44 @@
+import PostInput from './PostInput';
+import PostList from './PostList';
+
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
 
 const PostWrapper = () => {
-    const [titleData, setTitleData] = useState('');
-    const [textData, setTextData] = useState('');
-    const submitPost = event => {
-        event.preventDefault();
+    const [postList, setPostList] = useState([]);
+    const [list, updateList] = useState(true);
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const result = await axios.get('/api')
+            .then(res => {
+                return res;
+            }, (error) => {
+                console.log(error)
+            })
+            setPostList(result.data);
+        }
+        getPosts()
+        updateList(false);
+    }, [list])
+
+    function onSubmit(title, desc) {
         axios.post('/api', {
-            titleData,
-            textData
-        })
-        .then((res) => {
+            title,
+            desc
+        }).then((res) => {
             console.log(res)
-        }, (error) =>{
+            updateList(true)
+        }, (error) => {
             console.log(error)
         })
     }
+
     return (
         <div>
             <h1>Wrapper Header</h1>
-            <form onSubmit={submitPost}>
-                <input 
-                    type="text"
-                    name="name"
-                    placeholder="Title"
-                    onChange={e => setTitleData(e.target.value)}>
-                </input>
-                <textarea 
-                    type="text" 
-                    name="description" 
-                    placeholder="Post description" 
-                    onChange={e => setTextData(e.target.value)}>
-                </textarea>
-                <input type="submit" value="Submit"></input>
-            </form>
+            <PostList postList={postList}/>
+            <PostInput onSubmit={onSubmit}/>
         </div>
     )
 }

@@ -1,13 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var testAPIRouter = require('./routes/testAPI');
-var api = require('./routes/api');
+const testAPIRouter = require('./routes/testAPI');
+const api = require('./routes/api');
 
-var app = express();
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/MERN');
+
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,7 +33,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({error: err});
 });
 
 module.exports = app;
