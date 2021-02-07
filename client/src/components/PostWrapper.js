@@ -1,5 +1,6 @@
 import PostInput from './PostInput';
 import PostList from './PostList';
+import './PostWrapper.css';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -7,7 +8,6 @@ import axios from 'axios';
 const PostWrapper = () => {
     const [postList, setPostList] = useState([]);
     const [list, updateList] = useState(true);
-
     useEffect(() => {
         const getPosts = async () => {
             const result = await axios.get('/api')
@@ -43,10 +43,9 @@ const PostWrapper = () => {
     }
 
     return (
-        <div>
-            <h1>Wrapper Header</h1>
-            <PostList postList={postList} onDelete={onDelete}/>
+        <div className="PostWrapper">            
             <PostInput onSubmit={onSubmit}/>
+            <PostList postList={postList} onDelete={onDelete}/>
         </div>
     )
 }

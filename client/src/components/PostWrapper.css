@@ -1,0 +1,5 @@
+.PostWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+}

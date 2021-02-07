@@ -1,7 +1,9 @@
+import './PostList.css';
+
 const PostList = ( { postList, onDelete } ) => {
 
     return (
-        <div>
+        <div className="PostList">
             {postList.map(post => <li key={post._id}>
                 {post.title} <br/>
                 {post.text} <br/>

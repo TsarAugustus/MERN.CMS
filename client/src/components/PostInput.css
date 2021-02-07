@@ -1,0 +1,69 @@
+.PostInput {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    min-height: 30vh;
+    caret-color: #f05454;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.visibleBtn {
+    align-self: center;
+    height: 5vh;
+    max-width: 15vw;
+}
+
+h2 {
+    align-self: center;
+    font-weight: lighter;
+}
+
+.PostInput form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    width: 50%;
+    border: 1px solid #d6d6d6;
+    border-radius: 1em;
+    transition: border-radius 0.5s linear;
+}
+.title:focus {
+    outline: none;
+    border-radius: 0;
+    transition: border-radius 0.5s linear;
+}
+
+.desc {
+    display: flex;
+    width: 50%;
+    resize: none;
+    height: 1em;
+    transition: flex 1s;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+.desc:focus {
+    flex: 1;
+    outline: none;
+    transition: flex 1s;
+    white-space: pre-wrap;
+}
+
+.submit {
+    width: 10vw;
+}
