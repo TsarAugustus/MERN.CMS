@@ -8,7 +8,7 @@ const testAPIRouter = require('./routes/testAPI');
 const api = require('./routes/api');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/MERN', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/MERN', { useNewUrlParser: true, useUnifiedTopology: true } );
 
 const app = express();
 

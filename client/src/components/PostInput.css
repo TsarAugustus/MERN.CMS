@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
-    min-height: 30vh;
+    min-height: 40vh;
     caret-color: #f05454;
     font-family: Arial, Helvetica, sans-serif;
     
@@ -52,7 +52,7 @@ h2 {
     width: 50%;
     resize: none;
     height: 1em;
-    transition: flex 1s;
+    transition: flex 0.5s;
     overflow: hidden;
     white-space:nowrap;
 }
@@ -60,7 +60,7 @@ h2 {
 .desc:focus {
     flex: 1;
     outline: none;
-    transition: flex 1s;
+    transition: flex 0.5s;
     white-space: pre-wrap;
 }
 

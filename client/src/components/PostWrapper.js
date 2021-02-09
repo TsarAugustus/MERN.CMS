@@ -42,10 +42,14 @@ const PostWrapper = () => {
         })
     }
 
+    const onEdit = async (id) => {
+        console.log(id)
+    }
+
     return (
         <div className="PostWrapper">            
             <PostInput onSubmit={onSubmit}/>
-            <PostList postList={postList} onDelete={onDelete}/>
+            <PostList postList={postList} onDelete={onDelete} onEdit={onEdit}/>
         </div>
     )
 }
